@@ -55,9 +55,13 @@ contract ERC20Token is EIP20Interface {				                    // EIP20Interface
     
     function transferFrom(address _from, address _to, uint256 _value) public override returns (bool success){	
         // _from으로부터 _to에게 _value 수량의 토큰을 이동
-	    require(balances[_from]>=_value);
+        
+	    require(balances[_from]>=_value&&allowed[_from][msg.sender]>=_value);
         balances[_from]-=_value;
         balances[_to]+=_value;
+        if(allowed[_from][msg.sender]<MAX_UINT256){
+            allowed[_from][msg.sender]-=_value;
+        }
         emit Transfer(_from,_to,_value);
         return true;
 
@@ -82,6 +86,7 @@ contract ERC20Token is EIP20Interface {				                    // EIP20Interface
                                                                         // buyToken() public payable returns (bool success)
                                                                         //
     function buyToken() public payable returns (bool success){
+        if(msg.value<=0) return false;
        balances[msg.sender]+=msg.value;
        return true;
     }
