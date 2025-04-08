@@ -8,7 +8,7 @@ contract ElectronicVote {
     /* 상태변수 --> 블록체인에 영속적으로 저장 */
     uint public numCandidates;	                    // 후보 인원
     string[] candidateNames; 		                // 후보자 목록
-    mapping (uint => uint) public votesReceived;  // 후보자별 득표 수
+    mapping (string => uint) public votesReceived;  // 후보자별 득표 수
 
 
     /* constructor 함수는 컨트랙트가 배포될 때 1회 자동 실행 */     
@@ -31,11 +31,12 @@ contract ElectronicVote {
 	// 	votesReceived[candidateName] += 1;                  // 좌측의 “vote(string memory candidateName)” 함수를 변경하시오
     // }
     function vote(uint index) public{
-            votesReceived[index]+=1;
+        if(index<candidateNames.length)
+            votesReceived[candidateNames[index]]+=1;
    }
    //제대로 투표가 된 건지 확인하기 위한 함수 
     function getVotes(uint index) public view returns(uint) {
-    return votesReceived[index];
+    return votesReceived[candidateNames[index]];
 }
 }
 
