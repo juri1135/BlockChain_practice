@@ -17,8 +17,14 @@
 				"type": "constructor"
 			},
 			{
-				"inputs": [],
-				"name": "attack",
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_num",
+						"type": "uint256"
+					}
+				],
+				"name": "doSomething",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -50,7 +56,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/11-StorageCollisionAndDelegatecall-P.sol": "Hacker"
+			"contracts/10-ProxyPattern-P.sol": "ClientContract"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -64,12 +70,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/11-StorageCollisionAndDelegatecall-P.sol": {
-			"keccak256": "0xfb7dc6a6dd9d935960cccb91907fd840b650add34a05d20f9f1b48c47c1bf3d3",
+		"contracts/10-ProxyPattern-P.sol": {
+			"keccak256": "0xd77e24a2e26b9bf4be73b6e472d3f0a2bf96fcc7988955edbc26286f94a6017f",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://125abc37fbba30853c4c8bed6e1aff83264aa1d39396716e6919f24a8f4b0de7",
-				"dweb:/ipfs/QmR8y7fMeRR9VHwqkPXVeJqyivJSLLYuP5dR9kmhcoJjoT"
+				"bzz-raw://566497ddda793aa8c4c87ecb75342a3366f9ad20564a0a3e1fa89f41a1ad5f53",
+				"dweb:/ipfs/QmQWxUx8diCNNZzyzMHpuYcpnwZLgTtAWBYMpcix2YCju7"
 			]
 		}
 	},

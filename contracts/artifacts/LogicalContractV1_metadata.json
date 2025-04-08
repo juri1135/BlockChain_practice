@@ -8,29 +8,50 @@
 			{
 				"inputs": [
 					{
-						"internalType": "address",
-						"name": "_Addr",
-						"type": "address"
+						"internalType": "uint256",
+						"name": "_num",
+						"type": "uint256"
 					}
 				],
+				"name": "updateX",
+				"outputs": [],
 				"stateMutability": "nonpayable",
-				"type": "constructor"
+				"type": "function"
 			},
 			{
-				"inputs": [],
-				"name": "attack",
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_num",
+						"type": "uint256"
+					}
+				],
+				"name": "updateY",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
 				"inputs": [],
-				"name": "proxyAddr",
+				"name": "x",
 				"outputs": [
 					{
-						"internalType": "address",
+						"internalType": "uint256",
 						"name": "",
-						"type": "address"
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "y",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
@@ -50,7 +71,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/11-StorageCollisionAndDelegatecall-P.sol": "Hacker"
+			"contracts/11-StorageCollisionAndDelegatecall-P.sol": "LogicalContractV1"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
