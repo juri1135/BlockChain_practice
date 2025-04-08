@@ -28,7 +28,7 @@ contract Caller {
 
     function callFooA() public {
         returnVal = CalleeA.foo(123);						    // CalleeA의 객체가 존재하지 않으므로 호출 실패
-        //호출 실패하면서 fallback 함수 호출. stateVal 1로 초기화
+        //error
        
     }
     
@@ -40,7 +40,7 @@ contract Caller {
     function callFooWithAddr(address payable addr) public {		// Callee가 payable fallback을 가지고 있기 때문에 payable addr로 선언
         Callee CalleeC = Callee(addr);			//address를 contract로 변환 	
         returnVal = CalleeC.foo(789);				            // 변환된 컨트랙트를 이용한 호출 
-        //어떤 callee 호출하는지에 따라 갈림 
+        //addr이 A면 error, B면 1345
     }
     
     function callFooWithCall(address addr) public {
@@ -48,7 +48,8 @@ contract Caller {
             abi.encodeWithSignature("foo(uint256)", 888));		// 함수의 시그니처와 파라미터를 함께 인코딩하여 하나의 bytes형 파라미터로 변환
         returnVal = abi.decode(data, (uint));			        // 호출된 foo의 리턴값 data를 디코딩
                                                                 // (연습문제 1) Callee의 stateVal이 변경되는가?
-        //callee 변경                                                      
+        //addr이 A면  error, B면  2233
+        //caller는 변동 X                                                  
     }    
 
     function callFooWithDelegateCall(address addr) public {
@@ -56,6 +57,6 @@ contract Caller {
             abi.encodeWithSignature("foo(uint256)", 999));		// 함수의 시그니처와 파라미터를 함께 인코딩하여 하나의 bytes형 파라미터로 변환
         returnVal = abi.decode(data, (uint));			        // 호출된 foo의 리턴값 data를 디코딩
                                                                 // (연습문제 2) Callee의 stateVal이 변경되는가?
-        //callee는 그대로, caller는 변경                                  //delegate call은 caller의 문맥 유지. 따라서 변경 X
+        //callee는 그대로, caller는 3999                                  //delegate call은 caller의 문맥 유지. 따라서 변경 X
     } 
 }
